@@ -118,4 +118,8 @@ public interface CommentsInfoItemExtractor extends InfoItemExtractor {
     default Page getReplies() throws ParsingException {
         return null;
     }
+
+    default int getRepliesCount() throws ParsingException {
+        return 0;
+    }
 }
