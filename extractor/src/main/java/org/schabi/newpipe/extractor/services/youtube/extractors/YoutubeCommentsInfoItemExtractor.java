@@ -261,4 +261,24 @@ public class YoutubeCommentsInfoItemExtractor implements CommentsInfoItemExtract
             return null;
         }
     }
+
+    @Override
+    public int getRepliesCount() throws ParsingException {
+        final String repliesCount;
+        try {
+            repliesCount = Utils.removeNonDigitCharacters(JsonUtils.getString(JsonUtils.getArray(json, "replies.commentRepliesRenderer.viewReplies.buttonRenderer.text.runs").getObject(1), "text"));
+        } catch (final Exception e) {
+            return 0;
+        }
+
+        try {
+            if (Utils.isBlank(repliesCount)) {
+                return 0;
+            }
+
+            return Integer.parseInt(repliesCount);
+        } catch (final Exception e) {
+            throw new ParsingException("Unexpected error while parsing replies count as Integer", e);
+        }
+    }
 }
