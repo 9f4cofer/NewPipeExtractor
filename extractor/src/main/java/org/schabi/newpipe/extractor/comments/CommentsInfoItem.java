@@ -24,6 +24,7 @@ public class CommentsInfoItem extends InfoItem {
     private int streamPosition;
     @Nullable
     private Page replies;
+    private int repliesCount;
 
     public static final int NO_LIKE_COUNT = -1;
     public static final int NO_STREAM_POSITION = -1;
@@ -153,5 +154,13 @@ public class CommentsInfoItem extends InfoItem {
     @Nullable
     public Page getReplies() {
         return this.replies;
+    }
+
+    public void setRepliesCount(final int repliesCount) {
+        this.repliesCount = repliesCount;
+    }
+
+    public int getRepliesCount() {
+        return this.repliesCount;
     }
 }
